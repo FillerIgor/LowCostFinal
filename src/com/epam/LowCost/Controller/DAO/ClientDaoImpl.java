@@ -128,7 +128,7 @@ public class ClientDaoImpl implements ClientDao {
     public boolean duplicatefinderSignIn(String login, String password,String operation) throws SQLException{
         String sql= "SELECT * FROM Client WHERE login=? AND password=?;";
          if (operation.equals("OR")){
-            sql = "SELECT * FROM Client WHERE login=? ;";
+            sql = "SELECT * FROM Client WHERE login=? OR password=? ;";
         }
         try(PreparedStatement stm = connection.prepareStatement(sql)) {
             stm.setString(1, login);
